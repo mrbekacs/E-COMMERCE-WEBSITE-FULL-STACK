@@ -17,7 +17,7 @@ const loginUser = async (req, res) => {
       const user = await userModel.findOne({ email });
 
       if (!user) {
-         return res.json({ success: false, messagge: "User doesn't exist" })
+         return res.json({ success: false, message: "User doesn't exist" })
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -29,12 +29,12 @@ const loginUser = async (req, res) => {
 
       }
       else {
-         res.json({ success: false, messagge: "Invalid credentials" })
+         res.json({ success: false, message: "Invalid credentials" })
       }
 
    } catch (error) {
       console.log(error);
-      res.json({ success: false, messagge: error.messagge })
+      res.json({ success: false, message: error.messagge })
    }
 
 }
@@ -48,15 +48,15 @@ const registerUser = async (req, res) => {
       // checking user already exists or not
       const exists = await userModel.findOne({ email });
       if (exists) {
-         return res.json({ success: false, messagge: "User already exists" })
+         return res.json({ success: false, message: "User already exists" })
       }
 
       // validating email format & strong password
       if (!validator.isEmail(email)) {
-         return res.json({ success: false, messagge: "Please enter a valid email" })
+         return res.json({ success: false, message: "Please enter a valid email" })
       }
       if (password.length < 8) {
-         return res.json({ success: false, messagge: "Password should be at least 8 characters" })
+         return res.json({ success: false, message: "Password should be at least 8 characters" })
       }
 
       // Hashing user password
@@ -77,7 +77,7 @@ const registerUser = async (req, res) => {
 
    } catch (error) {
       console.log(error);
-      res.json({ success: false, messagge: error.messagge })
+      res.json({ success: false, message: error.messagge })
    }
 
 }
@@ -92,12 +92,12 @@ const adminLogin = async (req, res) => {
          const token = jwt.sign(email+password,process.env.JWT_SECRET);
          res.json({success:true, token})
       } else {
-         res.json({success:false, messagge: "Invalid credentials"})
+         res.json({success:false, message: "Invalid credentials"})
       }
 
    } catch (error) {
       console.log(error);
-      res.json({ success: false, messagge: error.messagge })
+      res.json({ success: false, message: error.message })
    }
 }
 

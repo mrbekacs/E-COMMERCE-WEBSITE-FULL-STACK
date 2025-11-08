@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { ShopContext } from '../context/ShopContext';
+import { useShopContext } from '../context/shopContext';
 import { assets } from '../assets/assets';
 import RelatedProducts from '../components/RelatedProducts';
 
 const Product = () => {
 
   const {productId} = useParams();
-  const {products, currency, addToCart} = useContext(ShopContext);
+  const {products, currency, addToCart} = useShopContext();
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
   const [size,setSize] = useState('')
 
-  const fetchProductData = async () => {
+  const fetchProductData = async (productId) => {
     products.map((item)=>{
       if (item._id === productId) {
         setProductData(item)
@@ -23,7 +23,8 @@ const Product = () => {
   }
 
   useEffect(()=>{
-    fetchProductData();
+    console.log(productId);
+    fetchProductData(productId);
   },[productId])
 
 

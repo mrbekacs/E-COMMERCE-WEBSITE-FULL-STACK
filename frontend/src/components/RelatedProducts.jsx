@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ShopContext } from '../context/ShopContext'
+import React, { useEffect, useState } from 'react'
 import Title from './Title';
 import ProductItem from './ProductItem';
+import { useShopContext } from '../context/shopContext';
 
 const RelatedProducts = ({category,subCategory}) => {
 
-    const { products } = useContext(ShopContext);
+    const { products } = useShopContext();
     const [related,setRelated] = useState([]);
 
     useEffect(()=>{

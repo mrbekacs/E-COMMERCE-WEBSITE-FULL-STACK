@@ -6,14 +6,14 @@ import About from './pages/About'
 import Contact from './pages/contact'
 import Product from './pages/product'
 import Cart from './pages/cart'
-import Login from './pages/login'
+import Login from './pages/Login'
 import PlaceOrder from './pages/placeOrder'
 import Orders from './pages/orders'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
