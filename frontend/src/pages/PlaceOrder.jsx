@@ -69,6 +69,7 @@ const PlaceOrder = () => {
           const response = await axios.post(backendUrl + '/api/order/place', orderData, {headers:{token}})
         
           if (response.data.success) {
+            toast.success("Order placed successfully 🎉");
             setCartItems({})
             navigate('/orders')
           } else {
