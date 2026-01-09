@@ -20,3 +20,7 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+# Default build packages
+node_modules
+# Environment variables
+*.env 
