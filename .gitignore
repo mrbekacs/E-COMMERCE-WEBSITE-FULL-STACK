@@ -23,4 +23,5 @@ TestResults.xml
 # Default build packages
 node_modules
 # Environment variables
-*.env 
+*.env
+.env
