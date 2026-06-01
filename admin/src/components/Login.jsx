@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { api } from '../utils/api'
-
+import { useNavigate } from "react-router-dom";
 
 const Login = ({setToken}) => {
 
+   const navigate = useNavigate();
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
@@ -15,6 +16,7 @@ const Login = ({setToken}) => {
          const response = await api.post('/api/user/admin', {email, password})
          if (response.data.success) {
             setToken(response.data.token)
+            navigate("/add");
          }else {
             toast.error(response.data.message)
          }
